@@ -1,4 +1,4 @@
-import { DisplayObject } from 'pixi.js'
+import { DisplayObject, Loader } from 'pixi.js'
 
 // This namespace enables syntax highlighting for Typescript in VSCode
 declare global {
@@ -33,7 +33,20 @@ export function jsx(
 	let node = new tag()
 
 	// Apply props
-	Object.assign(node, props)
+	for (const prop in props) {
+		const value = props[prop]
+		switch (prop) {
+			case "ref":
+				props.ref(node)
+				break;
+			case "texture":
+				node[prop] = Loader.shared.resources[value].texture
+				break;
+			default:
+				node[prop] = value
+				break;
+		}
+	}
 
 	// Add children
 	for (const child of children) {

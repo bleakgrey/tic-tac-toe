@@ -1,4 +1,4 @@
-import { Container } from 'pixi.js'
+import { Container, Loader } from 'pixi.js'
 import { GameConfig } from '../Game'
 import { Scene } from './Scene'
 
@@ -10,21 +10,25 @@ export class SceneManager extends Container {
 
     constructor(config: GameConfig) {
         super()
-        this.on(SceneManager.CHANGE_EVENT, this.onStageChange, this)
+        this.on(SceneManager.CHANGE_EVENT, this.onSceneChange, this)
 
         config.startScene && this.emit(SceneManager.CHANGE_EVENT, config.startScene)
     }
 
-    private onStageChange(newScene: Scene) {
-        console.log('Changing to scene:', newScene.constructor.name)
-
+    private onSceneChange(scene: Scene) {
         if (this.currentScene) {
+            console.log(`Stopping scene ${this.currentScene.constructor.name}`)
             this.currentScene.onStop()
             this.currentScene.parent.removeChild(this.currentScene)
         }
 
-        newScene.setParent(this)
-        this.currentScene = newScene
+        console.log(`Loading assets for ${scene.constructor.name}...`)
+        scene.loadAssets().then(() => {
+            console.log(`Switching to scene ${scene.constructor.name}`)
+            this.currentScene = scene
+            this.addChild(scene)
+            scene.onStart()
+        })
     }
 
 }

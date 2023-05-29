@@ -1,7 +1,7 @@
 import { Player } from "./Player"
 import { Status } from "./Status"
 
-export class Playfield {
+export class MatchState {
     public status = Status.ONGOING
     public currentTurn = Player.CROSS
     public grid = [
