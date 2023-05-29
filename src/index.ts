@@ -1,4 +1,4 @@
-import { Game } from "./engine/Game"
+import { Game } from "@/engine"
 import MainScene from "./scenes/main/Scene"
 
 const container = document.getElementById('app')!

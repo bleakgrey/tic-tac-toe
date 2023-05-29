@@ -1,4 +1,4 @@
-import { jsx } from '../../engine/Helpers'
+import { jsx } from '@/engine/Helpers'
 import { Container, BitmapText } from 'pixi.js'
 import { Playfield } from './Playfield'
 

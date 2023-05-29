@@ -22,7 +22,7 @@ export function jsx(
 
 	// Construct node from tag
 	let node
-	if (tag.name == BitmapText.name) {
+	if (tag == BitmapText) {
 		node = new tag(props.text, props.style)
 	}
 	else {

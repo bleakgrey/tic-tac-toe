@@ -1,28 +1,32 @@
 import { defineConfig } from 'vite'
 import { splitVendorChunkPlugin } from 'vite'
+import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
     root: './src',
     publicDir: '../public',
-    plugins: [splitVendorChunkPlugin()],
+    plugins: [
+        splitVendorChunkPlugin(),
+        tsconfigPaths(),
+    ],
     assetsInclude: [
         '**/*.png',
+        '**/*.fnt',
     ],
     build: {
         assetsInlineLimit: 0,
         assetsDir: './assets',
         outDir: '../dist',
         emptyOutDir: true,
-        minify: 'esbuild',
         rollupOptions: {
             output: {
                 assetFileNames: (asset) => {
                     console.log(asset)
-                    return "assets/[hash][extname]"
+                    return "assets/[name][extname]"
                 },
                 chunkFileNames: (chunk) => {
                     console.log(chunk)
-                    return "assets/[hash].js"
+                    return "assets/[name].js"
                 },
             },
         },

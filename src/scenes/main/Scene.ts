@@ -1,11 +1,11 @@
-import { Scene, StateMachine } from '../../engine'
+import { Scene, StateMachine } from '@/engine'
 import { BitmapText, Sprite } from "pixi.js"
 
-import { Match } from "../../match/Match"
+import { Match } from "./match"
+import { OpponentTurnState, PlayerTurnState, WinnerState } from './SceneStates'
 
 import View from "./View"
 import Assets from './Assets'
-import { OpponentTurnState, PlayerTurnState, WinnerState } from './SceneStates'
 
 export default class MainScene extends Scene {
 

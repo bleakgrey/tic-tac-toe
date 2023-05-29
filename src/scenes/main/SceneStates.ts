@@ -1,7 +1,8 @@
-import { State } from "../../engine"
-import { Player } from "../../match/Player"
+import { State } from "@/engine"
+import { Player } from "./match"
 import MainScene from "./Scene"
-import * as Strings from './strings/en_US.json'
+
+import * as Strings from '@/assets/strings/en_US.json'
 
 class SceneState {
     protected scene: MainScene

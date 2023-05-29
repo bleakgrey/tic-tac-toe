@@ -1,4 +1,4 @@
-import { jsx } from '../../engine/Helpers'
+import { jsx } from '@/engine/Helpers'
 import { Sprite } from 'pixi.js'
 import Assets from './Assets'
 
