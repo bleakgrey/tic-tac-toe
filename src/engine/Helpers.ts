@@ -1,27 +1,18 @@
-import { DisplayObject, Loader } from 'pixi.js'
+import { DisplayObject, Loader, BitmapText, Texture } from 'pixi.js'
 
 // This namespace enables syntax highlighting for Typescript in VSCode
 declare global {
 	namespace JSX {
-		type Element = DisplayObject;
-
-		interface ElementClass {
-			// render: any;
-			//setProps: (props: any) => void
-		}
-
-		interface IntrinsicElements { }
-
-		// interface ElementAttributesProperty {
-		// 	props: any
-		// }
-
-		// interface ElementChildrenAttribute {
-		// 	children: ElementClass[]
-		// }
+		type Element = DisplayObject
+		interface ElementClass { }
 	}
 }
 
+export function getTexture(id: String): Texture {
+	return Loader.shared.resources[id].texture
+}
+
+// This function is used to render scene views (.tsx files)
 export function jsx(
 	tag: JSX.ElementClass | any,
 	props: any,
@@ -29,8 +20,14 @@ export function jsx(
 ): DisplayObject {
 	// console.debug({ tag, props, children })
 
-	// Construct node from class
-	let node = new tag()
+	// Construct node from tag
+	let node
+	if (tag.name == BitmapText.name) {
+		node = new tag(props.text, props.style)
+	}
+	else {
+		node = new tag()
+	}
 
 	// Apply props
 	for (const prop in props) {
@@ -40,7 +37,7 @@ export function jsx(
 				props.ref(node)
 				break;
 			case "texture":
-				node[prop] = Loader.shared.resources[value].texture
+				node[prop] = getTexture(value)
 				break;
 			default:
 				node[prop] = value
