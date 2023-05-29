@@ -32,10 +32,29 @@ export abstract class Scene extends Container {
     }
     public onStop() { }
 
-    public watch<T>(obj: T): T {
-        const proxy = new Proxy(obj as object, {
+    public watch<T>(
+        obj: T,
+        propMap: { [propName: string]: (val: any) => void },
+    ): T {
+        const invokeCallback = (prop, value) => {
+            const callback = propMap[prop]
+            callback && callback(value)
+        }
 
+        const proxy = new Proxy(obj as object, {
+            set(target, prop, newValue, receiver) {
+                invokeCallback(prop, newValue)
+                invokeCallback('*', null)
+                return Reflect.set(...arguments)
+            },
         })
+
+        // Trigger to immediately sync the state
+        for (const [key, value] of Object.entries(obj)) {
+            invokeCallback(key, value)
+        }
+        setTimeout(() => invokeCallback('*', null), 0)
+
         return proxy as T
     }
 
