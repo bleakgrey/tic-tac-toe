@@ -1,6 +1,6 @@
 import { Container } from 'pixi.js'
-import { GameConfig } from '../game'
-import { Scene } from './scene'
+import { GameConfig } from '../Game'
+import { Scene } from './Scene'
 
 export class SceneManager extends Container {
 

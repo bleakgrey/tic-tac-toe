@@ -1,2 +1,2 @@
-export * from './scene'
-export * from './sceneManager'
+export * from './Scene'
+export * from './Manager'
