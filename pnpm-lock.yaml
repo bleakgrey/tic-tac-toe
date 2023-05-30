@@ -1,18 +1,22 @@
 lockfileVersion: 5.4
 
 specifiers:
+  fastpriorityqueue: ^0.7.4
+  pixi-spine: ^3.0.1
   pixi.js: ^6.5.9
   typescript: ^5.0.2
   vite: ^4.3.2
   vite-tsconfig-paths: ^4.2.0
 
 dependencies:
+  fastpriorityqueue: 0.7.4
+  pixi-spine: 3.1.2_6dpldpqwemekwjqzv7kjxmfh6u
   pixi.js: 6.5.9
-  vite-tsconfig-paths: 4.2.0_2gs4ymahx52s2pmgq265ylhxyq
 
 devDependencies:
   typescript: 5.0.4
   vite: 4.3.9
+  vite-tsconfig-paths: 4.2.0_2gs4ymahx52s2pmgq265ylhxyq
 
 packages:
 
@@ -22,6 +26,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/android-arm64/0.17.19:
@@ -30,6 +35,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/android-x64/0.17.19:
@@ -38,6 +44,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/darwin-arm64/0.17.19:
@@ -46,6 +53,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/darwin-x64/0.17.19:
@@ -54,6 +62,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/freebsd-arm64/0.17.19:
@@ -62,6 +71,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/freebsd-x64/0.17.19:
@@ -70,6 +80,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-arm/0.17.19:
@@ -78,6 +89,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-arm64/0.17.19:
@@ -86,6 +98,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-ia32/0.17.19:
@@ -94,6 +107,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-loong64/0.17.19:
@@ -102,6 +116,7 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-mips64el/0.17.19:
@@ -110,6 +125,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-ppc64/0.17.19:
@@ -118,6 +134,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-riscv64/0.17.19:
@@ -126,6 +143,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-s390x/0.17.19:
@@ -134,6 +152,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-x64/0.17.19:
@@ -142,6 +161,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/netbsd-x64/0.17.19:
@@ -150,6 +170,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/openbsd-x64/0.17.19:
@@ -158,6 +179,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/sunos-x64/0.17.19:
@@ -166,6 +188,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/win32-arm64/0.17.19:
@@ -174,6 +197,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/win32-ia32/0.17.19:
@@ -182,6 +206,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/win32-x64/0.17.19:
@@ -190,7 +215,133 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
+
+  /@pixi-spine/base/3.1.2_ryjglqiwzzh7oeqknawrevxsyy:
+    resolution: {integrity: sha512-sMOZsCJQW4O11QR7afuHcuu8cSUgJv3paSNzZOh+imxvYB/cOcyG7K+f5sWqlGe+z3J2CLEYCX2WfXeeJi6pHg==}
+    peerDependencies:
+      '@pixi/constants': ^6.1.0
+      '@pixi/core': ^6.1.0
+      '@pixi/display': ^6.1.0
+      '@pixi/graphics': ^6.1.0
+      '@pixi/math': ^6.1.0
+      '@pixi/mesh': ^6.1.0
+      '@pixi/mesh-extras': ^6.1.0
+      '@pixi/sprite': ^6.1.0
+      '@pixi/utils': ^6.1.0
+    dependencies:
+      '@pixi/constants': 6.5.9
+      '@pixi/core': 6.5.9_yc3lyad5jwyinmndak3aswu4u4
+      '@pixi/display': 6.5.9_bvodkhrxo7znbflksqz7mk2k3q
+      '@pixi/graphics': 6.5.9_b4qdtyhs3i756ta3scsytrvyiy
+      '@pixi/math': 6.5.9
+      '@pixi/mesh': 6.5.9_b4zyc73gthwid7yuuju7gyyh2m
+      '@pixi/mesh-extras': 6.5.9_3fn4nkfzaqcmrnvbzir4am2raa
+      '@pixi/sprite': 6.5.9_b4zyc73gthwid7yuuju7gyyh2m
+      '@pixi/utils': 6.5.9_56wmgtaor3g36gitvwiown43he
+    dev: false
+
+  /@pixi-spine/loader-base/3.1.2_6dpldpqwemekwjqzv7kjxmfh6u:
+    resolution: {integrity: sha512-llg0RuuWiqVkyoQA+ceORV0sfUtrWGJj4jQ6erDFn2hMnob+QGzh+qwHSTMAnTNZTINEMfiUxmcwbmUYwTd8Ag==}
+    peerDependencies:
+      '@pixi/constants': ^6.1.0
+      '@pixi/core': ^6.1.0
+      '@pixi/loaders': ^6.1.0
+    dependencies:
+      '@pixi-spine/base': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi/constants': 6.5.9
+      '@pixi/core': 6.5.9_yc3lyad5jwyinmndak3aswu4u4
+      '@pixi/loaders': 6.5.9_w2lcn7hofes4dna4evbtydbuee
+    transitivePeerDependencies:
+      - '@pixi/display'
+      - '@pixi/graphics'
+      - '@pixi/math'
+      - '@pixi/mesh'
+      - '@pixi/mesh-extras'
+      - '@pixi/sprite'
+      - '@pixi/utils'
+    dev: false
+
+  /@pixi-spine/loader-uni/3.1.2_6dpldpqwemekwjqzv7kjxmfh6u:
+    resolution: {integrity: sha512-5th9gXqNQWMSuOu3euMw2kHETlncxU7LIFvOYqTMsKnwrOAIsPjHSF/4Sat1d3EAvvdMrYm4LmhHklgrAfk6UA==}
+    peerDependencies:
+      '@pixi/loaders': ^6.1.0
+    dependencies:
+      '@pixi-spine/base': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi-spine/loader-base': 3.1.2_6dpldpqwemekwjqzv7kjxmfh6u
+      '@pixi-spine/runtime-3.7': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi-spine/runtime-3.8': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi-spine/runtime-4.1': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi/loaders': 6.5.9_w2lcn7hofes4dna4evbtydbuee
+    transitivePeerDependencies:
+      - '@pixi/constants'
+      - '@pixi/core'
+      - '@pixi/display'
+      - '@pixi/graphics'
+      - '@pixi/math'
+      - '@pixi/mesh'
+      - '@pixi/mesh-extras'
+      - '@pixi/sprite'
+      - '@pixi/utils'
+    dev: false
+
+  /@pixi-spine/runtime-3.7/3.1.2_ryjglqiwzzh7oeqknawrevxsyy:
+    resolution: {integrity: sha512-dMcw5x9jG+0itzzbPsJUn8hvhxzRXRzbm/kCUQ51iyFfLZQIK1LoPck4XPVuXckwFjU1qCT+tDZSEGBMYs5//A==}
+    peerDependencies:
+      '@pixi/constants': ^6.1.0
+      '@pixi/math': ^6.1.0
+    dependencies:
+      '@pixi-spine/base': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi/constants': 6.5.9
+      '@pixi/math': 6.5.9
+    transitivePeerDependencies:
+      - '@pixi/core'
+      - '@pixi/display'
+      - '@pixi/graphics'
+      - '@pixi/mesh'
+      - '@pixi/mesh-extras'
+      - '@pixi/sprite'
+      - '@pixi/utils'
+    dev: false
+
+  /@pixi-spine/runtime-3.8/3.1.2_ryjglqiwzzh7oeqknawrevxsyy:
+    resolution: {integrity: sha512-AgS3mUC+5HQ/ehJO5Wo4oBoLg8F+tssF5WXi3FnnjqOaMcO+Ag232ForoL2iYHW40TKx0xMi5MpXsSafgS1i1A==}
+    peerDependencies:
+      '@pixi/constants': ^6.1.0
+      '@pixi/math': ^6.1.0
+    dependencies:
+      '@pixi-spine/base': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi/constants': 6.5.9
+      '@pixi/math': 6.5.9
+    transitivePeerDependencies:
+      - '@pixi/core'
+      - '@pixi/display'
+      - '@pixi/graphics'
+      - '@pixi/mesh'
+      - '@pixi/mesh-extras'
+      - '@pixi/sprite'
+      - '@pixi/utils'
+    dev: false
+
+  /@pixi-spine/runtime-4.1/3.1.2_ryjglqiwzzh7oeqknawrevxsyy:
+    resolution: {integrity: sha512-XtaKAuLTtJ3o3llcUTr0d94dnRTyYHlss+x4VsYm1H38r4DUmQTBS13nisW0pgS3fY60D8AbEJkYVW7mwokxag==}
+    peerDependencies:
+      '@pixi/constants': ^6.1.0
+      '@pixi/math': ^6.1.0
+    dependencies:
+      '@pixi-spine/base': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi/constants': 6.5.9
+      '@pixi/math': 6.5.9
+    transitivePeerDependencies:
+      - '@pixi/core'
+      - '@pixi/display'
+      - '@pixi/graphics'
+      - '@pixi/mesh'
+      - '@pixi/mesh-extras'
+      - '@pixi/sprite'
+      - '@pixi/utils'
+    dev: false
 
   /@pixi/accessibility/6.5.9_wtesdf2sutvwnylndgmm6smujq:
     resolution: {integrity: sha512-+cgnskv4wEmY8bNUceMLzIk6rfm+sqg+IiCW0aiL3w4KQJXV05/+aFMqufp9fFqAtb/GdGcS0HJxx9jXiqe4aw==}
@@ -668,7 +819,7 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
-    dev: false
+    dev: true
 
   /earcut/2.2.4:
     resolution: {integrity: sha512-/pjZsA1b4RPHbeWZQn66SWS8nZZWLQQ23oE3Eam7aroEFGEvwKAsJfZ9ytiEMycfzXWpca4FA9QIOehf7PocBQ==}
@@ -702,9 +853,14 @@ packages:
       '@esbuild/win32-arm64': 0.17.19
       '@esbuild/win32-ia32': 0.17.19
       '@esbuild/win32-x64': 0.17.19
+    dev: true
 
   /eventemitter3/3.1.2:
     resolution: {integrity: sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==}
+    dev: false
+
+  /fastpriorityqueue/0.7.4:
+    resolution: {integrity: sha512-u7o5oa9R7CMOHo2i8P2/T2nRg5bg/0dDegDSJVzkVkMf/A318LNnujNLfpxlJeXUdDAefrVPqsDV624vUyxNfA==}
     dev: false
 
   /fsevents/2.3.2:
@@ -712,20 +868,22 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
-    dev: false
+    dev: true
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
-    dev: false
+    dev: true
 
   /nanoid/3.3.6:
     resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+    dev: true
 
   /object-assign/4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
@@ -734,6 +892,29 @@ packages:
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+    dev: true
+
+  /pixi-spine/3.1.2_6dpldpqwemekwjqzv7kjxmfh6u:
+    resolution: {integrity: sha512-rTTwXhBl5gZFZ793zdM/to0bifU8K4aa1gD0ilOiCqC/pgw5OxCcKnoRW3i05ythjzI3GlN6G0MDblOe2myr3w==}
+    dependencies:
+      '@pixi-spine/base': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi-spine/loader-base': 3.1.2_6dpldpqwemekwjqzv7kjxmfh6u
+      '@pixi-spine/loader-uni': 3.1.2_6dpldpqwemekwjqzv7kjxmfh6u
+      '@pixi-spine/runtime-3.7': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi-spine/runtime-3.8': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+      '@pixi-spine/runtime-4.1': 3.1.2_ryjglqiwzzh7oeqknawrevxsyy
+    transitivePeerDependencies:
+      - '@pixi/constants'
+      - '@pixi/core'
+      - '@pixi/display'
+      - '@pixi/graphics'
+      - '@pixi/loaders'
+      - '@pixi/math'
+      - '@pixi/mesh'
+      - '@pixi/mesh-extras'
+      - '@pixi/sprite'
+      - '@pixi/utils'
+    dev: false
 
   /pixi.js/6.5.9:
     resolution: {integrity: sha512-j617kWuQGaIoyohFCR+SFpjQg6rGDsqLJjGF59NqEE2AvvjS0Q8P4EMkV1YAhg7NRFKUMiPof0W6W3xsd8Tr3w==}
@@ -783,6 +964,7 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: true
 
   /promise-polyfill/8.3.0:
     resolution: {integrity: sha512-H5oELycFml5yto/atYqmjyigJoAo3+OXwolYiH7OfQuYlAqhxNvTfiNMbV9hsC6Yp83yE5r2KTVmtrG6R9i6Pg==}
@@ -804,10 +986,12 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /tsconfck/2.1.1_typescript@5.0.4:
     resolution: {integrity: sha512-ZPCkJBKASZBmBUNqGHmRhdhM8pJYDdOXp4nRgj/O0JwUwsMq50lCDRQP/M5GBNAA0elPrq4gAeu4dkaVCuKWww==}
@@ -820,12 +1004,13 @@ packages:
         optional: true
     dependencies:
       typescript: 5.0.4
-    dev: false
+    dev: true
 
   /typescript/5.0.4:
     resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
     engines: {node: '>=12.20'}
     hasBin: true
+    dev: true
 
   /url/0.11.0:
     resolution: {integrity: sha512-kbailJa29QrtXnxgq+DdCEGlbTeYM2eJUxsz6vjZavrCYPMIFHMKQmSKYAIuUK2i7hgPm28a8piX5NTUtM/LKQ==}
@@ -849,7 +1034,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - typescript
-    dev: false
+    dev: true
 
   /vite/4.3.9:
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
@@ -881,3 +1066,4 @@ packages:
       rollup: 3.23.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true

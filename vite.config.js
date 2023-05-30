@@ -12,12 +12,14 @@ export default defineConfig({
     assetsInclude: [
         '**/*.png',
         '**/*.fnt',
+        '**/*.atlas',
     ],
     build: {
         assetsInlineLimit: 0,
         assetsDir: './assets',
         outDir: '../dist',
         emptyOutDir: true,
+        // sourcemap: true,
         rollupOptions: {
             output: {
                 assetFileNames: (asset) => {
