@@ -1,3 +1,4 @@
+import { Spine } from 'pixi-spine'
 import { DisplayObject, Loader, BitmapText, Texture } from 'pixi.js'
 
 // This namespace enables syntax highlighting for Typescript in VSCode
@@ -24,6 +25,11 @@ export function jsx(
 	let node
 	if (tag == BitmapText) {
 		node = new tag(props.text, props.style)
+	}
+	else if (tag == Spine) {
+		const resource = Loader.shared.resources[props.asset]
+		const spineData = resource.spineData
+		node = new tag(spineData)
 	}
 	else {
 		node = new tag()
