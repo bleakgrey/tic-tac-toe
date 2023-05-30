@@ -1,4 +1,4 @@
-import { Container, Loader } from 'pixi.js'
+import { Container } from 'pixi.js'
 import { GameConfig } from '../Game'
 import { Scene } from './Scene'
 

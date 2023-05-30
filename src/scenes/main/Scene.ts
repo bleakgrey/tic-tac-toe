@@ -23,14 +23,20 @@ export default class MainScene extends Scene {
         super.onStart()
 
         this.sm = new StateMachine([
-            new OpponentTurnState(this),
             new PlayerTurnState(this),
+            new OpponentTurnState(this),
             new WinnerState(this),
         ])
 
         this.match = this.watch(new Match(), {
-            '*': () => this.sm.update(),
+            '*': () => this.onMatchChanged(),
         })
+        this.onMatchChanged()
+    }
+
+    private onMatchChanged() {
+        this.sm.update()
+        this.field.setCells(this.match.grid)
     }
 
 }
