@@ -21,7 +21,8 @@ export abstract class Scene extends Container {
             loader.onComplete.add(() => resolve(true))
 
             for (const url of Object.values(this.assets)) {
-                loader.add(url, url)
+                if (!url.includes('.atlas'))
+                    loader.add(url, url)
             }
             loader.load()
         })
@@ -43,9 +44,11 @@ export abstract class Scene extends Container {
 
         const proxy = new Proxy(obj as object, {
             set(target, prop, newValue, receiver) {
+                const result = Reflect.set(...arguments)
                 invokeCallback(prop, newValue)
                 invokeCallback('*', null)
-                return Reflect.set(...arguments)
+
+                return result
             },
         })
 
@@ -53,7 +56,6 @@ export abstract class Scene extends Container {
         for (const [key, value] of Object.entries(obj)) {
             invokeCallback(key, value)
         }
-        setTimeout(() => invokeCallback('*', null), 0)
 
         return proxy as T
     }
