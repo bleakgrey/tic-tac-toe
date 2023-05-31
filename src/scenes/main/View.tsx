@@ -15,6 +15,7 @@ export default (refs: any) => {
 		<Playfield ref={el => refs.field = el}
 			x={650}
 			y={250}
+			alpha={0}
 		/>
 	</Viewport>
 
