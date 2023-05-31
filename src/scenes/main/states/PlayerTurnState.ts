@@ -21,22 +21,34 @@ export class PlayerTurnState extends SceneState {
                 cell.buttonMode = true
 
                 cell.on('pointerdown', () => this.onCellClicked(cell))
+                cell.on('pointerover', () => this.onCellOver(cell))
+                cell.on('pointerout', () => this.onCellLeave(cell))
             }
         }
     }
 
     onCellClicked(cell) {
+        cell.setGlow(false)
         const action = new PlayerTurnAction({
             symbol: this.symbol,
             cellIndex: cell.parent.getChildIndex(cell),
         })
         this.match.commit(action)
     }
+    onCellOver(cell) {
+        cell.setGlow(true)
+    }
+    onCellLeave(cell) {
+        cell.setGlow(false)
+    }
 
     onLeave() {
         for (const cell of this.affectedCells) {
             cell.removeAllListeners('pointerdown')
+            cell.removeAllListeners('pointerover')
+            cell.removeAllListeners('pointerout')
             cell.buttonMode = false
+            this.onCellLeave(cell)
         }
     }
 

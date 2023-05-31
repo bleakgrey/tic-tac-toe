@@ -39,6 +39,7 @@ export class WinnerState extends SceneState {
             .to(this.scene.heading, {
                 alpha: 0,
                 x: '+=100',
+                delay: 0.2,
             })
             .set(this.scene.field, { interactiveChildren: true })
     }

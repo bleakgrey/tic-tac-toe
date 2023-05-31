@@ -6,7 +6,7 @@ export class OpponentTurnState extends SceneState {
 
     symbol = Player.CIRCLE
     opponent = Player.CROSS
-    delay = 0.35 * 1000
+    delay = 0.5 * 1000
 
     canEnter() {
         return this.match?.currentTurn == this.symbol

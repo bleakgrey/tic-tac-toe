@@ -41,13 +41,16 @@ export function jsx(
 		switch (prop) {
 			case "ref":
 				props.ref(node)
-				break;
+				break
 			case "texture":
-				node[prop] = getTexture(value)
-				break;
+				if (value instanceof Texture)
+					node[prop] = value
+				else
+					node[prop] = getTexture(value)
+				break
 			default:
 				node[prop] = value
-				break;
+				break
 		}
 	}
 
