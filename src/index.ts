@@ -6,7 +6,7 @@ const container = document.getElementById('app')!
 export const gameInstance = new Game({
     baseWidth: 1920,
     baseHeight: 1080,
-    resizeTo: container,
+    resizeTo: window,
     antialias: true,
     backgroundColor: 0x00c1ac,
     startScene: new MainScene(),

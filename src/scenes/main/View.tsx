@@ -1,9 +1,10 @@
 import { jsx } from '@/engine/Helpers'
-import { Container, BitmapText } from 'pixi.js'
+import { Container, BitmapText, Sprite, Texture } from 'pixi.js'
 import { Playfield } from './components/Playfield'
+import { Viewport } from './components/Viewport'
 
 export default (refs: any) => {
-	const view = <Container>
+	const view = <Viewport>
 		<BitmapText ref={el => refs.heading = el}
 			x={1920 / 2}
 			y={125}
@@ -15,7 +16,7 @@ export default (refs: any) => {
 			x={650}
 			y={250}
 		/>
-	</Container>
+	</Viewport>
 
 	return view
 }

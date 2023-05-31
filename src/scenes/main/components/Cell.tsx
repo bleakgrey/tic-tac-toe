@@ -21,7 +21,7 @@ export function Cell() {
     </Container>
 
     const glowAnim = gsap.timeline({ paused: true })
-        .fromTo(sprite, { alpha: 0 }, { alpha: 1, duration: 0.75 })
+        .fromTo(sprite, { alpha: 0 }, { alpha: 1, duration: 0.5 })
 
     cell.setGlow = (state: boolean) => {
         state == true ? glowAnim.play() : glowAnim.reverse()
@@ -30,21 +30,24 @@ export function Cell() {
     cell.undraw = (spine: Spine) => {
         spine.autoUpdate = false
         spine.state.setAnimation(0, 'draw', false)
+
         const track = spine.state.tracks[0]
+        const tracker = { time: track.animationEnd + (Math.random() * 0.5) }
+        gsap.timeline()
+            .to(tracker, {
+                time: 0,
+                duration: tracker.time,
 
-        track.animationEnd += Math.random() * 0.5
-        let time = track.animationEnd
-        let interval = setInterval(() => {
-            time -= 0.0125
-
-            if (time <= 0) {
-                clearInterval(interval)
+                // Spine doesn't support playing animations in
+                // reverse, so we update the track manually
+                onUpdate: () => {
+                    track.trackTime = 0
+                    spine.update(tracker.time)
+                }
+            })
+            .call(() => {
                 cell.removeChild(spine)
-            }
-
-            track.trackTime = 0
-            spine.update(time)
-        }, 10)
+            })
     }
 
     cell.draw = (symbol: Player) => {

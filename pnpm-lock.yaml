@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   gsap: ^3.11.5
   pixi-spine: ^3.0.1
+  pixi-viewport: ^4.38.0
   pixi.js: ^6.5.9
   typescript: ^5.0.2
   vite: ^4.3.2
@@ -11,6 +12,7 @@ specifiers:
 dependencies:
   gsap: 3.11.5
   pixi-spine: 3.1.2_6dpldpqwemekwjqzv7kjxmfh6u
+  pixi-viewport: 4.38.0_2b6vrnoi2lcae47kikfquthhfu
   pixi.js: 6.5.9
 
 devDependencies:
@@ -914,6 +916,20 @@ packages:
       - '@pixi/mesh-extras'
       - '@pixi/sprite'
       - '@pixi/utils'
+    dev: false
+
+  /pixi-viewport/4.38.0_2b6vrnoi2lcae47kikfquthhfu:
+    resolution: {integrity: sha512-TGj6Ymk/BU0wZcW4c1eP4e96aETJmB7jhjBflMjQU06/ZHPy7qHw8JyDqZ+C84SEg0ewCHjDNZ2vgR3Kjk74BQ==}
+    peerDependencies:
+      '@pixi/display': ^6.5.8
+      '@pixi/interaction': ^6.5.8
+      '@pixi/math': ^6.5.8
+      '@pixi/ticker': ^6.5.8
+    dependencies:
+      '@pixi/display': 6.5.9_bvodkhrxo7znbflksqz7mk2k3q
+      '@pixi/interaction': 6.5.9_xa53e7w3bgmnzzlrien7airnhe
+      '@pixi/math': 6.5.9
+      '@pixi/ticker': 6.5.9_3ywbupy267ddqakwfvxdxsi3ce
     dev: false
 
   /pixi.js/6.5.9:
