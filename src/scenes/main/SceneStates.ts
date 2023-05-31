@@ -108,6 +108,7 @@ export class PlayerTurnState extends SceneState implements State {
 export class OpponentTurnState extends SceneState implements State {
 
     symbol = Player.CIRCLE
+    opponent = Player.CROSS
 
     canEnter() {
         return this.match?.currentTurn == this.symbol
@@ -116,11 +117,15 @@ export class OpponentTurnState extends SceneState implements State {
     onEnter() {
         const worker = new Opponent()
         worker.onmessage = (ev) => {
-            const action = new PlayerTurnAction(ev.data)
+            const action = new PlayerTurnAction({
+                symbol: this.symbol,
+                cellIndex: ev.data,
+            })
             this.match.commit(action)
         }
         worker.postMessage({
             symbol: this.symbol,
+            opponent: this.opponent,
             match: JSON.stringify(this.match),
         })
     }
