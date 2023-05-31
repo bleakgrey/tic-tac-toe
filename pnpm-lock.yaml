@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  fastpriorityqueue: ^0.7.4
+  gsap: ^3.11.5
   pixi-spine: ^3.0.1
   pixi.js: ^6.5.9
   typescript: ^5.0.2
@@ -9,7 +9,7 @@ specifiers:
   vite-tsconfig-paths: ^4.2.0
 
 dependencies:
-  fastpriorityqueue: 0.7.4
+  gsap: 3.11.5
   pixi-spine: 3.1.2_6dpldpqwemekwjqzv7kjxmfh6u
   pixi.js: 6.5.9
 
@@ -859,10 +859,6 @@ packages:
     resolution: {integrity: sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==}
     dev: false
 
-  /fastpriorityqueue/0.7.4:
-    resolution: {integrity: sha512-u7o5oa9R7CMOHo2i8P2/T2nRg5bg/0dDegDSJVzkVkMf/A318LNnujNLfpxlJeXUdDAefrVPqsDV624vUyxNfA==}
-    dev: false
-
   /fsevents/2.3.2:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -874,6 +870,10 @@ packages:
   /globrex/0.1.2:
     resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
     dev: true
+
+  /gsap/3.11.5:
+    resolution: {integrity: sha512-Q89nKCLgoX5xUjznh9LcaIUkz54k1voNucT1Rpf9SJNFIQznBwFqt5qUUQbeVInFyN/n18OUJkpeI6CNEDt74w==}
+    dev: false
 
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}

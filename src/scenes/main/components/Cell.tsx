@@ -3,9 +3,15 @@ import { Container, Sprite } from 'pixi.js'
 import { Spine } from 'pixi-spine'
 import Assets from '../Assets'
 import { Player } from '../match'
+import gsap from 'gsap'
+
+const PLAYER_SPINES = {
+    [Player.CROSS]: Assets.CROSS,
+    [Player.CIRCLE]: Assets.CIRCLE,
+}
 
 export function Cell() {
-    let sprite: Sprite
+    let sprite!: Sprite
 
     const cell: any = <Container>
         <Sprite ref={el => sprite = el}
@@ -14,8 +20,11 @@ export function Cell() {
         />
     </Container>
 
+    const glowAnim = gsap.timeline({ paused: true })
+        .fromTo(sprite, { alpha: 0 }, { alpha: 1, duration: 0.75 })
+
     cell.setGlow = (state: boolean) => {
-        sprite.alpha = state == true ? 1 : 0
+        state == true ? glowAnim.play() : glowAnim.reverse()
     }
 
     cell.undraw = (spine: Spine) => {
@@ -38,7 +47,7 @@ export function Cell() {
         }, 10)
     }
 
-    cell.draw = (symbol: any) => {
+    cell.draw = (symbol: Player) => {
         if (symbol == cell.symbol)
             return
         cell.symbol = symbol
@@ -48,17 +57,9 @@ export function Cell() {
             cell.undraw(spine)
         }
 
-        let asset
-        switch (symbol) {
-            case Player.CIRCLE:
-                asset = Assets.CIRCLE
-                break
-            case Player.CROSS:
-                asset = Assets.CROSS
-                break
-            default:
-                return
-        }
+        let asset = PLAYER_SPINES[symbol]
+        if (!asset)
+            return
 
         cell.spine = <Spine
             asset={asset}
@@ -67,7 +68,6 @@ export function Cell() {
             y={202 / 2}
         />
         cell.addChild(cell.spine)
-
         cell.spine.state.setAnimation(0, 'draw', false)
     }
 

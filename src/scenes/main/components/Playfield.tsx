@@ -3,18 +3,18 @@ import { Sprite } from 'pixi.js'
 import { Cell } from './Cell'
 import Assets from '../Assets'
 
-export function Playfield() {
-    const cellSize = 202
-    const cellMargin = 17
-    const gridSize = 3
+const CELL_SIZE = 202
+const CELL_MARGIN = 17
+const GRID_SIZE = 3
 
+export function Playfield() {
     const view = <Sprite texture={Assets.GRID} />
 
     view.cells = []
     for (const i of [...Array(9).keys()]) {
         const cell = <Cell
-            x={i % gridSize * (cellSize + cellMargin)}
-            y={Math.floor(i / gridSize) * (cellSize + cellMargin)}
+            x={i % GRID_SIZE * (CELL_SIZE + CELL_MARGIN)}
+            y={Math.floor(i / GRID_SIZE) * (CELL_SIZE + CELL_MARGIN)}
         />
         view.addChild(cell)
         view.cells.push(cell)

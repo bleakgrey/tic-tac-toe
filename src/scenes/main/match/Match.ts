@@ -5,6 +5,7 @@ const CHANGE_TURN = new ChangeTurnAction(null)
 const CHECK_WINNER = new CheckWinnerAction(null)
 
 export type Grid = (Player | null)[]
+export type MatchResult = Player | 'draw'
 
 export class Match {
 
@@ -16,7 +17,7 @@ export class Match {
 
     public currentTurn = Player.CROSS
 
-    public winner: Player | undefined | 'draw'
+    public winner?: MatchResult
     public winnerPattern: (number[] | null) = null
 
     public clone(): Match {

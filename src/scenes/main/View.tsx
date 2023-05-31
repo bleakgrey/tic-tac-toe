@@ -9,6 +9,7 @@ export default (refs: any) => {
 			y={125}
 			anchor={{ x: 0.5, y: 0.5 }}
 			style={{ fontName: 'lightFont' }}
+			alpha={0}
 		/>
 		<Playfield ref={el => refs.field = el}
 			x={650}
