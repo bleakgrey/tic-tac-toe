@@ -8,6 +8,7 @@ export const gameInstance = new Game({
     baseHeight: 1080,
     resizeTo: window,
     antialias: true,
+    autoDensity: true,
     backgroundColor: 0x00c1ac,
     startScene: new MainScene(),
 })
