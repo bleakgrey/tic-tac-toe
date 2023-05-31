@@ -2,7 +2,7 @@ import { Scene, StateMachine } from '@/engine'
 import { BitmapText, Sprite } from "pixi.js"
 
 import { Match } from "./match"
-import { OpponentTurnState, PlayerTurnState, WinnerState } from './SceneStates'
+import { OpponentTurnState, PlayerTurnState, WinnerState } from './states'
 
 import View from "./View"
 import Assets from './Assets'

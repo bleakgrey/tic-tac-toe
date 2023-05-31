@@ -20,12 +20,12 @@ export class StateMachine {
 
         if (newState != this.currentState) {
             if (this.currentState) {
-                console.log(`Leaving state: ${this.currentState.constructor.name}`)
+                // console.log(`Leaving state: ${this.currentState.constructor.name}`)
                 this.currentState.onLeave()
             }
 
             if (newState != undefined) {
-                console.log(`Entering state: ${newState.constructor.name}`)
+                // console.log(`Entering state: ${newState.constructor.name}`)
                 newState.onEnter()
                 this.currentState = newState
             }

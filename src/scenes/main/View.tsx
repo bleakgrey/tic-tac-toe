@@ -1,9 +1,8 @@
 import { jsx } from '@/engine/Helpers'
 import { Container, BitmapText } from 'pixi.js'
-import { Playfield } from './Playfield'
+import { Playfield } from './components/Playfield'
 
 export default (refs: any) => {
-
 	const view = <Container>
 		<BitmapText ref={el => refs.heading = el}
 			x={1920 / 2}
