@@ -1,34 +1,40 @@
 import { SceneState } from "./SceneStates"
 import { Player, PlayerTurnAction } from "../match"
-import Opponent from '../match/Opponent?worker'
+import OpponentWorker from '../match/OpponentWorker?worker'
+import MainScene from "../Scene"
 
 export class OpponentTurnState extends SceneState {
 
+    worker: Worker
     symbol = Player.CIRCLE
     opponent = Player.CROSS
-    delay = 0.5 * 1000
+    delay = 0.5
 
-    canEnter() {
-        return this.match?.currentTurn == this.symbol
-    }
+    constructor(scene: MainScene) {
+        super(scene)
 
-    onEnter() {
-        const worker = new Opponent()
-        worker.onmessage = (ev) => {
+        this.worker = new OpponentWorker()
+        this.worker.onmessage = (ev) => {
             const action = new PlayerTurnAction({
                 symbol: this.symbol,
                 cellIndex: ev.data,
             })
             this.match.commit(action)
         }
+    }
 
+    canEnter() {
+        return this.match?.currentTurn == this.symbol
+    }
+
+    onEnter() {
         setTimeout(() => {
-            worker.postMessage({
+            this.worker.postMessage({
                 self: this.symbol,
                 opponent: this.opponent,
                 grid: this.match.grid,
             })
-        }, this.delay)
+        }, this.delay * 1000)
     }
 
 }

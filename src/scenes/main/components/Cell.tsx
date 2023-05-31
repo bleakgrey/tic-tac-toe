@@ -1,9 +1,10 @@
 import { jsx } from '@/engine/Helpers'
-import { Container, Sprite } from 'pixi.js'
 import { Spine } from 'pixi-spine'
-import Assets from '../Assets'
-import { Player } from '../match'
+import { Container, Sprite } from 'pixi.js'
 import gsap from 'gsap'
+
+import { Player } from '../match'
+import Assets from '../Assets'
 
 const PLAYER_SPINES = {
     [Player.CROSS]: Assets.CROSS,

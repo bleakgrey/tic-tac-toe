@@ -1,5 +1,5 @@
 import { jsx } from '@/engine/Helpers'
-import { Container, BitmapText, Sprite, Texture } from 'pixi.js'
+import { BitmapText } from 'pixi.js'
 import { Playfield } from './components/Playfield'
 import { Viewport } from './components/Viewport'
 
