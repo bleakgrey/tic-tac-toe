@@ -1,129 +1,111 @@
-import { Match, Player } from '.'
+import { CheckWinnerAction, Grid, Match, Player, ResetAction } from '.'
 
-let aiPlayer = Player.CIRCLE
-let huPlayer = Player.CROSS
-let origBoard = [
-    aiPlayer, null, huPlayer,
-    huPlayer, null, huPlayer,
-    null, aiPlayer, aiPlayer
-]
+/*
+    Minimax algorithm implementation for Tic-tac-toe
+    Based on this article: https://www.neverstopbuilding.com/blog/minimax
+*/
 
-let fc = 0
+const matchSimulation = new Match()
+let self: Player
+let opponent: Player
+let grid: Grid = []
 
 onmessage = (e) => {
-    aiPlayer = e.data.symbol
-    huPlayer = e.data.opponent
-    const match = JSON.parse(e.data.match)
-    match.__proto__ = (new Match() as any).__proto__
+    self = e.data.self
+    opponent = e.data.opponent
+    grid = e.data.grid
 
-    origBoard = [...match.grid]
-    console.log('Starting state:', origBoard)
-
-    const bestSpot = minimax(origBoard, aiPlayer)
-
-    postMessage(bestSpot.index)
+    const bestMove = minimax(grid, self)
+    postMessage(bestMove.index)
 }
 
-function minimax(newBoard, player) {
-    //add one to function calls
-    fc++;
+interface Move {
+    index: number | null,
+    score: number,
+}
 
-    //available spots
-    const availSpots = emptyIndexies(newBoard)
-    // console.log(availSpots)
+function minimax(grid: Grid, player: Player): Move {
+    const availableCells = getEmptyCells(grid)
 
-    if (winning(newBoard, huPlayer)) {
-        return { score: -10 }
+    if (hasPlayerWon(grid, opponent)) {
+        return {
+            score: -1,
+            index: null,
+        }
     }
-    else if (winning(newBoard, aiPlayer)) {
-        return { score: 10 }
+    else if (hasPlayerWon(grid, self)) {
+        return {
+            score: 1,
+            index: null,
+        }
     }
-    else if (availSpots.length === 0) {
-        return { score: 0 }
+    else if (availableCells.length === 0) {
+        return {
+            score: 0,
+            index: null,
+        }
     }
 
-    // an array to collect all the objects
-    const moves = []
+    const moves: Move[] = []
+    for (let i = 0; i < availableCells.length; i++) {
+        let move: Move = {
+            index: availableCells[i],
+            score: 0,
+        }
 
-    // loop through available spots
-    for (let i = 0; i < availSpots.length; i++) {
-        //create an object for each and store the index of that spot that was stored as a number in the object's index key
-        let move = {};
-        move.index = availSpots[i]
+        grid[move.index!] = player
 
-        // set the empty spot to the current player
-        newBoard[move.index] = player;
-
-        //if collect the score resulted from calling minimax on the opponent of the current player
-        if (player == aiPlayer) {
-            let result = minimax(newBoard, huPlayer);
-            move.score = result.score;
+        if (player == self) {
+            move.score = minimax(grid, opponent).score
         }
         else {
-            let result = minimax(newBoard, aiPlayer);
-            move.score = result.score;
+            move.score = minimax(grid, self).score
         }
 
-        //reset the spot to empty
-        newBoard[move.index] = null //move.index;
+        grid[move.index!] = null
 
-        // push the object to the array
-        moves.push(move);
+        moves.push(move)
     }
 
-    // if it is the computer's turn loop over the moves and choose the move with the highest score
-    let bestMove
-    if (player === aiPlayer) {
-        let bestScore = -10000;
-        for (var i = 0; i < moves.length; i++) {
-            if (moves[i].score > bestScore) {
-                bestScore = moves[i].score;
-                bestMove = i;
+    let bestMove: Move
+    let bestScore: number
+    switch (player) {
+        case self:
+            bestScore = -10000
+            for (const move of moves) {
+                if (move.score > bestScore) {
+                    bestScore = move.score
+                    bestMove = move
+                }
             }
-        }
-    } else {
-        // else loop over the moves and choose the move with the lowest score
-        let bestScore = 10000;
-        for (var i = 0; i < moves.length; i++) {
-            if (moves[i].score < bestScore) {
-                bestScore = moves[i].score;
-                bestMove = i;
-            }
-        }
-    }
+            break
 
-    // return the chosen move (object) from the array to the higher depth
-    return moves[bestMove];
+        case opponent:
+            bestScore = 10000
+            for (const move of moves) {
+                if (move.score < bestScore) {
+                    bestScore = move.score
+                    bestMove = move
+                }
+            }
+            break
+    }
+    return bestMove!
 }
 
-// returns the available spots on the board
-function emptyIndexies(board) {
-    let result = []
-    for (const i in board) {
-        if (board[i] === null)
+function getEmptyCells(grid: Grid): number[] {
+    let result: number[] = []
+    for (const i in grid) {
+        if (grid[i] === null)
             result.push(i)
     }
-    // console.info(result)
     return result
-
-    // board.filter(s => s != "O" && s != "X");
-    // return board.filter(s => s != "O" && s != "X");
 }
 
-// winning combinations using the board indexies for instace the first win could be 3 xes in a row
-function winning(board, player) {
-    if (
-        (board[0] == player && board[1] == player && board[2] == player) ||
-        (board[3] == player && board[4] == player && board[5] == player) ||
-        (board[6] == player && board[7] == player && board[8] == player) ||
-        (board[0] == player && board[3] == player && board[6] == player) ||
-        (board[1] == player && board[4] == player && board[7] == player) ||
-        (board[2] == player && board[5] == player && board[8] == player) ||
-        (board[0] == player && board[4] == player && board[8] == player) ||
-        (board[2] == player && board[4] == player && board[6] == player)
-    ) {
-        return true
-    } else {
-        return false
-    }
+function hasPlayerWon(grid: Grid, player: Player) {
+    matchSimulation.commit(new ResetAction(null))
+    matchSimulation.grid = grid
+    matchSimulation.commit(new CheckWinnerAction(null))
+
+    return matchSimulation.winner == player
 }

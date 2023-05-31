@@ -1,4 +1,4 @@
-import { Action } from "../../../../engine/solver"
+import { Action } from "./Action"
 import { Match } from "../Match"
 
 export const WIN_PATTERNS = [
@@ -37,8 +37,8 @@ export class CheckWinnerAction extends Action<Match, null> {
             }
         }
 
-        const s = state.grid.find(symbol => symbol == null)
-        if (s === undefined) {
+        const emptyCell = state.grid.find(symbol => symbol == null)
+        if (emptyCell === undefined) {
             state.winnerPattern = []
             state.winner = 'draw'
         }

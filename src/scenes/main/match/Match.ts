@@ -1,15 +1,14 @@
-import { Action, SolvableState } from "../../../engine/solver"
-import { ChangeTurnAction } from "./actions/ChangeTurn"
-import { CheckWinnerAction } from "./actions/CheckWinner"
-import { PlayerTurnAction } from "./actions/PlayerTurn"
-import { Player } from "./Player"
+import { Player } from "./"
+import { Action, ChangeTurnAction, CheckWinnerAction, PlayerTurnAction } from './actions'
 
 const CHANGE_TURN = new ChangeTurnAction(null)
 const CHECK_WINNER = new CheckWinnerAction(null)
 
-export class Match extends SolvableState {
+export type Grid = (Player | null)[]
 
-    public grid: (Player | null)[] = [
+export class Match {
+
+    public grid: Grid = [
         null, null, null,
         null, null, null,
         null, null, null,
@@ -20,7 +19,7 @@ export class Match extends SolvableState {
     public winner: Player | undefined | 'draw'
     public winnerPattern: (number[] | null) = null
 
-    override clone(): Match {
+    public clone(): Match {
         const state = new Match()
         state.grid = [...this.grid]
         state.currentTurn = this.currentTurn
@@ -29,7 +28,12 @@ export class Match extends SolvableState {
         return state
     }
 
-    public override onActionApplied(action: Action<this, any>): void {
+    public commit(action: Action<this, any>) {
+        action.apply(this)
+        this.onActionApplied(action)
+    }
+
+    public onActionApplied(action: Action<this, any>): void {
         if (action instanceof PlayerTurnAction) {
             this.commit(CHECK_WINNER)
             this.commit(CHANGE_TURN)

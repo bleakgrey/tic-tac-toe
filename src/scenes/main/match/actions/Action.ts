@@ -1,8 +1,6 @@
-import { SolvableState } from "./SolvableState"
-
 export class Action<
-    T extends SolvableState,    // What state does this action operate on?
-    D extends any,              // What params does this action take?
+    T extends any,    // What state does this action operate on?
+    D extends any,    // What params does this action take?
 > {
 
     public data: D

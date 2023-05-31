@@ -1,4 +1,4 @@
-import { Action } from "../../../../engine/solver"
+import { Action } from "./Action"
 import { Match } from "../Match"
 import { Player } from "../Player"
 
