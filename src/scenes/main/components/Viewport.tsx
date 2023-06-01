@@ -1,4 +1,3 @@
-import { jsx } from '@/engine/Helpers'
 import { Viewport as PixiViewport } from 'pixi-viewport'
 import { gameInstance } from '@'
 

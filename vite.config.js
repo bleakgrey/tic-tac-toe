@@ -5,6 +5,9 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 export default defineConfig({
     root: './src',
     publicDir: '../public',
+    server: {
+        open: '/'
+    },
     plugins: [
         splitVendorChunkPlugin(),
         tsconfigPaths(),
@@ -14,6 +17,9 @@ export default defineConfig({
         '**/*.fnt',
         '**/*.atlas',
     ],
+    esbuild: {
+        jsxInject: `import { jsx } from '@/engine/Helpers'`,
+    },
     build: {
         assetsInlineLimit: 0,
         assetsDir: './assets',

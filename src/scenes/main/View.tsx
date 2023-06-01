@@ -1,4 +1,3 @@
-import { jsx } from '@/engine/Helpers'
 import { BitmapText } from 'pixi.js'
 import { Playfield } from './components/Playfield'
 import { Viewport } from './components/Viewport'
